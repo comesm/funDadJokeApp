@@ -2,10 +2,10 @@
 
 ## A web application that renders dad jokes
 
-![Alt text](public/img/examplescreen.png)
 ### Getting Started
-```
+
 Install dependencies
+```
 npm install
 ```
 to start up your local express server.  From there, run
