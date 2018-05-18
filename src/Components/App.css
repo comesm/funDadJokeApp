@@ -1,0 +1,31 @@
+/*div {
+  background-color: #99cc00;
+  padding: 10px;
+}*/
+
+.body {
+  font-size: 15px;
+  line-height:24px;
+}
+
+.TableView {
+  box-sizing: border-box;
+  display: block;
+  font-family: sans-serif;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
