@@ -11,29 +11,63 @@ const styles = {
 
 class TableRow extends Component {
 
+
   constructor(props) {
     super(props);
-    console.log(11, this.props);
+    this.state = {
+      funny: null
+    }
+  }
+
+  toggleFunny() {
+
+    let nextFunnyState;
+
+    if(this.state.funny === null) {
+       if(this.props.joke.vote) {
+         nextFunnyState = "Not Funny";
+       } else {
+         nextFunnyState = "Funny";
+       }
+    } else {
+      if(this.state.funny === "Funny") {
+        nextFunnyState = "Not Funny";
+      } else {
+        nextFunnyState = "Funny";
+      }
+    }
+
+    this.setState(
+      {
+        funny: nextFunnyState
+      },
+      ()=> {
+        if(this.state.funny === "Funny") {
+          this.props.updateCount(true);
+        } else {
+          this.props.updateCount(false);
+        }
+       }
+    )
   }
 
   render() {
-    console.log(11, this.props);
     return (
       <tr>
            <td><Checkbox
-            checked={this.props.joke.vote ? true: false}
+            onCheck={this.toggleFunny.bind(this)}
+            defaultChecked={this.props.joke.vote ? true: false}
             checkedIcon={<ActionFavorite />}
             uncheckedIcon={<ActionFavoriteBorder />}
             style={styles.checkbox}
             /></td>
-           <td>{this.props.joke.vote ? "Funny" : "Not Funny"}</td>
+           <td>{
+            !this.state.funny ? (this.props.joke.vote ? "Funny" : "Not Funny") : this.state.funny}</td>
            <td>{this.props.joke.joke}</td>
       </tr>
 
-    )
+      )
   }
-
-
 }
 
 export default TableRow

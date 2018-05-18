@@ -15,7 +15,6 @@ function requestWrapper() {
   return new Promise((resolve, reject) => {
     axios(options)
      .then(response => {
-      console.log(15, response.data.joke);
       return resolve(response.data.joke);
       //this.setState({joke: response.data.joke});
      })

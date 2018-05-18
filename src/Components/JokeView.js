@@ -34,11 +34,9 @@ class JokeView extends Component {
   getJoke() {
     makeRequest()
      .then(results => {
-        console.log(31, results);
         this.setState({currentJoke: results});
      })
      .catch(err => {
-       console.log(35, err);
        this.setState({currentJoke:
         "click on like button to fetch a joke"});
      })

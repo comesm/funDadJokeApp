@@ -9,7 +9,6 @@ class ResultView extends Component {
 
 
   render() {
-    console.log(28, this.props.votedJokes);
     return (
       <div>
      <p>Here are your Results: </p>
@@ -22,7 +21,7 @@ class ResultView extends Component {
           <th>Joke</th>
          </tr>
           {this.props.votedJokes.map((jokeObj, idx) => (
-           <TableRow key={idx} joke={jokeObj} />
+           <TableRow updateCount={this.props.updateCount} key={idx} joke={jokeObj} />
          ))
          }
         </table>
@@ -33,37 +32,6 @@ class ResultView extends Component {
   }
 
 }
-
-
-// let ResultView = ({results }) => (
-//  <div>
-//      <p>Here are your Results: </p>
-//      <p>Funny: </p>
-//      <p>Not Funny: </p>
-//      <p>Here are your Results: </p>
-//       <Table>
-//        <TableHeader>
-//         <TableHeaderColumn>Vote</TableHeaderColumn>
-//         <TableHeaderColumn>Rating</TableHeaderColumn>
-//         <TableHeaderColumn>Joke</TableHeaderColumn>
-//        </TableHeader>
-//        <TableBody>
-//        {results.map((jokeObj, idx) => (
-//         <TableRow>
-//         <TableRowColumn></TableRowColumn>
-//          <TableRowColumn>{jokeObj.vote ? "Funny" : "Not Funny"}</TableRowColumn>
-//          <TableRowColumn style={{whiteSpace: 'normal', wordWrap: 'break-word'}}>{jokeObj.joke}</TableRowColumn>
-//        </TableRow>))
-//        }
-//        </TableBody>
-//       </Table>
-//       <div>
-
-//       </div>
-//   </div>
-
-// )
-
 
 
 export default ResultView

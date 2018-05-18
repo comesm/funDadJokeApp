@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-//import './App.css';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import JokeView from './JokeView'
 import ResultView from './ResultView'
@@ -23,6 +22,8 @@ class TableView extends Component {
         totalFunny: 0,
         totalNotFny: 0
     }
+    this.updateJokes = this.updateJokes.bind(this);
+    this.updateCount = this.updateCount.bind(this)
   }
 
   updateJokes(joke, outcome) {
@@ -35,16 +36,29 @@ class TableView extends Component {
 
   }
 
+  updateCount(funny) {
+    if(funny) {
+      this.setState(prevState => ({
+      totalFunny: prevState.totalFunny + 1,
+      totalNotFny: prevState.totalNotFny - 1
+    }));
+    } else {
+      this.setState(prevState => ({
+      totalFunny: prevState.totalFunny - 1,
+      totalNotFny: prevState.totalNotFny + 1
+    }))
+    }
+  }
+
   render() {
-    console.log(27, this.state.jokeObj);
     return (
       <div className={"TableView"}>
        <Tabs>
          <Tab label="Joke">
-          <JokeView votedJokes={this.state.jokeObj} updateJokes={this.updateJokes.bind(this)} />
+          <JokeView votedJokes={this.state.jokeObj} updateJokes={this.updateJokes} />
           </Tab>
         <Tab label="Results">
-           <ResultView funny={this.state.totalFunny} notFunny={this.state.totalNotFny} votedJokes={this.state.votedOn} />
+           <ResultView funny={this.state.totalFunny} updateCount={this.updateCount} notFunny={this.state.totalNotFny} votedJokes={this.state.votedOn} />
           </Tab>
           </Tabs>
       </div>)
